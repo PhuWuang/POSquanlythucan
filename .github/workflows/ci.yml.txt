@@ -1,0 +1,34 @@
+name: CI (.NET Framework 4.7.2 + MSTest)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore QLBanDoAnNhanh.sln
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build (Release)
+        run: msbuild QLBanDoAnNhanh.sln /t:Build /p:Configuration=Release /m
+
+      # Tự tìm vstest.console.exe bằng vswhere rồi chạy test DLL (.NET Framework)
+      - name: Run MSTest
+        shell: pwsh
+        run: |
+          $vsPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property installationPath
+          $vstest = Join-Path $vsPath 'Common7\IDE\Extensions\TestPlatform\vstest.console.exe'
+          & $vstest "tests\QLBanDoAnNhanh.Tests\bin\Release\QLBanDoAnNhanh.Tests.dll"

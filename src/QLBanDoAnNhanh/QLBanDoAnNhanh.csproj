@@ -127,6 +127,7 @@
     <Compile Include="ItemOrder.Designer.cs">
       <DependentUpon>ItemOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PriceHelper.cs.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />

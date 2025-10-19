@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLBanDoAnNhanh", "src\QLBanDoAnNhanh\QLBanDoAnNhanh.csproj", "{8925203D-07F9-4786-A782-AFCFE48F5DDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLBanDoAnNhanh.Tests", "tests\QLBanDoAnNhanh.Tests\QLBanDoAnNhanh.Tests.csproj", "{C710BD5A-CC83-4248-AD4C-9024AC7FBFC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8925203D-07F9-4786-A782-AFCFE48F5DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8925203D-07F9-4786-A782-AFCFE48F5DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8925203D-07F9-4786-A782-AFCFE48F5DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8925203D-07F9-4786-A782-AFCFE48F5DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C710BD5A-CC83-4248-AD4C-9024AC7FBFC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C710BD5A-CC83-4248-AD4C-9024AC7FBFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C710BD5A-CC83-4248-AD4C-9024AC7FBFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C710BD5A-CC83-4248-AD4C-9024AC7FBFC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
