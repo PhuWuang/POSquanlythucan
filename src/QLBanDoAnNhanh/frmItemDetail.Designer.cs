@@ -107,7 +107,7 @@
             this.btnSoldOut.Location = new System.Drawing.Point(21, 458);
             this.btnSoldOut.Name = "btnSoldOut";
             this.btnSoldOut.Size = new System.Drawing.Size(108, 54);
-            this.btnSoldOut.TabIndex = 5;
+            this.btnSoldOut.TabIndex = 1;
             this.btnSoldOut.Text = "Sold out";
             this.btnSoldOut.Click += new System.EventHandler(this.btnSoldOut_Click);
             // 
@@ -126,7 +126,7 @@
             this.btnDelete.Location = new System.Drawing.Point(329, 458);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(108, 54);
-            this.btnDelete.TabIndex = 6;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -138,7 +138,7 @@
             this.lbDecript.Location = new System.Drawing.Point(12, 315);
             this.lbDecript.Name = "lbDecript";
             this.lbDecript.Size = new System.Drawing.Size(439, 126);
-            this.lbDecript.TabIndex = 7;
+            this.lbDecript.TabIndex = 0;
             this.lbDecript.Text = "abc";
             // 
             // btnEdit
@@ -156,7 +156,7 @@
             this.btnEdit.Location = new System.Drawing.Point(172, 458);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(113, 54);
-            this.btnEdit.TabIndex = 8;
+            this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 

@@ -17,8 +17,6 @@ namespace QLBanDoAnNhanh.Models
         [Key]
         public int IdOrder { get; set; }
 
-        public int? quantity { get; set; }
-
         [Column(TypeName = "money")]
         public decimal? Total { get; set; }
 

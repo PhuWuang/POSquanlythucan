@@ -19,7 +19,7 @@ namespace QLBanDoAnNhanh
         private Item _itemProduct;
         private ItemOrder _itemOrder;
         private decimal _price = 0;
-        private int _category = 11;
+        private int _category = 1;
 
         private frmlogin _frmlogin = new frmlogin();
         public frmMain(int idEmployee, frmlogin frmlogin)
@@ -34,15 +34,15 @@ namespace QLBanDoAnNhanh
             flpOrder.Controls.Clear();
             switch (_category)
             {
-                case 11:
+                case 1:
                     btnFoods.PerformClick(); break;
-                case 12:
+                case 2:
                     btnDrink.PerformClick(); break;
-                case 13:
+                case 3:
                     btnSnack.PerformClick(); break;
-                case 14:
+                case 4:
                     btnDessert.PerformClick(); break;
-                case 15:
+                case 5:
                     btnCombo.PerformClick(); break;
             }
             _posFastFood = new PosFastFood();
@@ -67,10 +67,10 @@ namespace QLBanDoAnNhanh
             btnSetting.FillColor = Color.Transparent;
             btnSetting.FillColor2 = Color.Transparent;
             lbCategory.Text = "Foods";
-            _category = 11;
+            _category = 1;
             flpItems.Controls.Clear();
             _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 11).ToList();
+            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 1).ToList();
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -114,10 +114,10 @@ namespace QLBanDoAnNhanh
             btnAdditem.FillColor = Color.Transparent;
             btnAdditem.FillColor2 = Color.Transparent;
             lbCategory.Text = "Drink";
-            _category = 12;
+            _category = 2;
             flpItems.Controls.Clear();
             _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 12).ToList();
+            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 2).ToList();
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -163,10 +163,10 @@ namespace QLBanDoAnNhanh
             btnSetting.FillColor = Color.Transparent;
             btnSetting.FillColor2 = Color.Transparent;
             lbCategory.Text = "Snack";
-            _category = 13;
+            _category = 3;
             flpItems.Controls.Clear();
             _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 13).ToList();
+            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 3).ToList();
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -212,10 +212,10 @@ namespace QLBanDoAnNhanh
             btnSetting.FillColor = Color.Transparent;
             btnSetting.FillColor2 = Color.Transparent;
             lbCategory.Text = "Dessert";
-            _category = 14;
+            _category = 4;
             flpItems.Controls.Clear();
             _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 14).ToList();
+            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 4).ToList();
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -261,10 +261,10 @@ namespace QLBanDoAnNhanh
             btnSetting.FillColor = Color.Transparent;
             btnSetting.FillColor2 = Color.Transparent;
             lbCategory.Text = "Combo";
-            _category = 15;
+            _category = 5;
             flpItems.Controls.Clear();
             _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 15).ToList();
+            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 5).ToList();
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -317,15 +317,15 @@ namespace QLBanDoAnNhanh
                 form.ShowDialog();
                 switch (_category)
                 {
-                    case 11:
+                    case 1:
                         btnFoods.PerformClick(); break;
-                    case 12:
+                    case 2:
                         btnDrink.PerformClick(); break;
-                    case 13:
+                    case 3:
                         btnSnack.PerformClick(); break;
-                    case 14:
+                    case 4:
                         btnDessert.PerformClick(); break;
-                    case 15:
+                    case 5:
                         btnCombo.PerformClick(); break;
                 }
             }
@@ -429,15 +429,15 @@ namespace QLBanDoAnNhanh
                 form.ShowDialog();
                 switch (_category)
                 {
-                    case 11:
+                    case 1:
                         btnFoods.PerformClick(); break;
-                    case 12:
+                    case 2:
                         btnDrink.PerformClick(); break;
-                    case 13:
+                    case 3:
                         btnSnack.PerformClick(); break;
-                    case 14:
+                    case 4:
                         btnDessert.PerformClick(); break;
-                    case 15:
+                    case 5:
                         btnCombo.PerformClick(); break;
                 }
             }
@@ -483,15 +483,15 @@ namespace QLBanDoAnNhanh
                 {
                     switch (_category)
                     {
-                        case 11:
+                        case 1:
                             btnFoods.PerformClick(); break;
-                        case 12:
+                        case 2:
                             btnDrink.PerformClick(); break;
-                        case 13:
+                        case 3:
                             btnSnack.PerformClick(); break;
-                        case 14:
+                        case 4:
                             btnDessert.PerformClick(); break;
-                        case 15:
+                        case 5:
                             btnCombo.PerformClick(); break;
                     }
                     DialogResult dialog = MessageBox.Show("Can't find this item!");
@@ -537,15 +537,15 @@ namespace QLBanDoAnNhanh
             {
                 switch (_category)
                 {
-                    case 11:
+                    case 1:
                         btnFoods.PerformClick(); break;
-                    case 12:
+                    case 2:
                         btnDrink.PerformClick(); break;
-                    case 13:
+                    case 3:
                         btnSnack.PerformClick(); break;
-                    case 14:
+                    case 4:
                         btnDessert.PerformClick(); break;
-                    case 15:
+                    case 5:
                         btnCombo.PerformClick(); break;
                 }
                 DialogResult dialog = MessageBox.Show("Can't find this item!");
@@ -554,34 +554,44 @@ namespace QLBanDoAnNhanh
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            Order order = new Order();
-            int quantity = 0;
+            // 1) Nếu cần tổng SL để hiển thị, chỉ tính tạm (KHÔNG lưu vào Orders)
+            int totalQuantity = 0;
             foreach (Control control in flpOrder.Controls)
-            {
-                if (control is ItemOrder item)
-                {
-                   quantity += item.Quantity;
-                }
-            }
-            foreach (Control control in flpOrder.Controls)
-            {
-                if (control is ItemOrder item)
-                {
-                    Product product = _posFastFood.Products.Find(item.Tag);
-                    order.quantity = quantity;
-                    order.Total = (_price * (decimal)0.05) + _price;
-                    order.CreateDate = DateTime.Now;
-                    order.IdEmployee = _idEmployee;
+                if (control is ItemOrder it) totalQuantity += it.Quantity;
 
-                    OrderDetail orderDetail = new OrderDetail();
-                    orderDetail.IdProduct = product.IdProduct;
-                    orderDetail.quantity = item.Quantity;
-                    order.OrderDetails.Add(orderDetail);
+            // 2) Tạo Order (KHÔNG có thuộc tính quantity trong Order)
+            var order = new Order
+            {
+                Total = _price + (_price * 0.05m), // VAT 5%
+                CreateDate = DateTime.Now,
+                IdEmployee = _idEmployee,
+                OrderDetails = new List<OrderDetail>() // quan trọng: khởi tạo list
+            };
+
+            // 3) Thêm các dòng chi tiết
+            foreach (Control control in flpOrder.Controls)
+            {
+                if (control is ItemOrder item)
+                {
+                    // item.Tag thường là IdProduct; ép kiểu an toàn
+                    var productId = (item.Tag is int pid) ? pid : Convert.ToInt32(item.Tag);
+                    var product = _posFastFood.Products.Find(productId);
+                    if (product == null) continue; // hoặc throw/MessageBox tùy ý
+
+                    order.OrderDetails.Add(new OrderDetail
+                    {
+                        IdProduct = product.IdProduct,
+                        quantity = item.Quantity
+                        // IdOrder sẽ được EF tự set sau khi insert Order
+                    });
                 }
             }
+
+            // 4) Lưu
             _posFastFood.Orders.Add(order);
             _posFastFood.SaveChanges();
-            MessageBox.Show("Succsess!!");
+
+            MessageBox.Show("Success!!");
             frmMain_Load(sender, e);
         }
 

@@ -63,7 +63,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(960, 409);
-            this.guna2Panel1.TabIndex = 27;
+            this.guna2Panel1.TabIndex = 3;
             // 
             // tbDecript
             // 
@@ -85,7 +85,7 @@
             this.tbDecript.PlaceholderText = "";
             this.tbDecript.SelectedText = "";
             this.tbDecript.Size = new System.Drawing.Size(251, 188);
-            this.tbDecript.TabIndex = 20;
+            this.tbDecript.TabIndex = 0;
             // 
             // label1
             // 
@@ -112,7 +112,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(784, 149);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(150, 35);
-            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -130,7 +130,7 @@
             this.btnUpload.Location = new System.Drawing.Point(75, 327);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(145, 27);
-            this.btnUpload.TabIndex = 15;
+            this.btnUpload.TabIndex = 1;
             this.btnUpload.Text = "Upload";
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
@@ -190,7 +190,7 @@
             this.tbName.PlaceholderText = "";
             this.tbName.SelectedText = "";
             this.tbName.Size = new System.Drawing.Size(254, 35);
-            this.tbName.TabIndex = 23;
+            this.tbName.TabIndex = 1;
             this.tbName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbName_KeyDown);
             this.tbName.Validating += new System.ComponentModel.CancelEventHandler(this.tbName_Validating);
             // 
@@ -218,7 +218,7 @@
             this.cbType.Location = new System.Drawing.Point(497, 36);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(251, 36);
-            this.cbType.TabIndex = 26;
+            this.cbType.TabIndex = 0;
             // 
             // lbType
             // 
@@ -251,7 +251,7 @@
             this.tbPrice.PlaceholderText = "";
             this.tbPrice.SelectedText = "";
             this.tbPrice.Size = new System.Drawing.Size(254, 35);
-            this.tbPrice.TabIndex = 24;
+            this.tbPrice.TabIndex = 2;
             this.tbPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPrice_KeyDown);
             this.tbPrice.Validating += new System.ComponentModel.CancelEventHandler(this.tbPrice_Validating);
             // 

@@ -32,10 +32,10 @@
             this.tbNewpass = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbOldpass = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.cbShow = new System.Windows.Forms.CheckBox();
             this.btnConfr = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbShow = new System.Windows.Forms.CheckBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +99,20 @@
             this.guna2Panel1.Size = new System.Drawing.Size(430, 231);
             this.guna2Panel1.TabIndex = 2;
             // 
+            // cbShow
+            // 
+            this.cbShow.AutoSize = true;
+            this.cbShow.BackColor = System.Drawing.Color.Transparent;
+            this.cbShow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbShow.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbShow.Location = new System.Drawing.Point(41, 133);
+            this.cbShow.Name = "cbShow";
+            this.cbShow.Size = new System.Drawing.Size(61, 21);
+            this.cbShow.TabIndex = 2;
+            this.cbShow.Text = "Show";
+            this.cbShow.UseVisualStyleBackColor = false;
+            this.cbShow.CheckedChanged += new System.EventHandler(this.cbShow_CheckedChanged);
+            // 
             // btnConfr
             // 
             this.btnConfr.BorderRadius = 5;
@@ -113,7 +127,7 @@
             this.btnConfr.Location = new System.Drawing.Point(264, 171);
             this.btnConfr.Name = "btnConfr";
             this.btnConfr.Size = new System.Drawing.Size(120, 34);
-            this.btnConfr.TabIndex = 3;
+            this.btnConfr.TabIndex = 4;
             this.btnConfr.Text = "Confrim";
             this.btnConfr.Click += new System.EventHandler(this.btnConfr_Click);
             // 
@@ -130,27 +144,13 @@
             this.btnExit.Location = new System.Drawing.Point(41, 171);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(120, 34);
-            this.btnExit.TabIndex = 2;
+            this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Exit";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // cbShow
-            // 
-            this.cbShow.AutoSize = true;
-            this.cbShow.BackColor = System.Drawing.Color.Transparent;
-            this.cbShow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbShow.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbShow.Location = new System.Drawing.Point(41, 133);
-            this.cbShow.Name = "cbShow";
-            this.cbShow.Size = new System.Drawing.Size(61, 21);
-            this.cbShow.TabIndex = 14;
-            this.cbShow.Text = "Show";
-            this.cbShow.UseVisualStyleBackColor = false;
-            this.cbShow.CheckedChanged += new System.EventHandler(this.cbShow_CheckedChanged);
             // 
             // frmChangePass
             // 

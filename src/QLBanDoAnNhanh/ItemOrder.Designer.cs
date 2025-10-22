@@ -85,7 +85,7 @@
             // 
             // numQuantity
             // 
-            this.numQuantity.BackColor = System.Drawing.Color.Tomato;
+            this.numQuantity.BackColor = System.Drawing.Color.WhiteSmoke;
             this.numQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numQuantity.Location = new System.Drawing.Point(279, 22);
             this.numQuantity.Minimum = new decimal(new int[] {
@@ -106,7 +106,7 @@
             // 
             this.lbRootPrice.AutoSize = true;
             this.lbRootPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRootPrice.Location = new System.Drawing.Point(221, 23);
+            this.lbRootPrice.Location = new System.Drawing.Point(205, 24);
             this.lbRootPrice.Name = "lbRootPrice";
             this.lbRootPrice.Size = new System.Drawing.Size(52, 18);
             this.lbRootPrice.TabIndex = 6;
@@ -124,7 +124,7 @@
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.lbName);
             this.Name = "ItemOrder";
-            this.Size = new System.Drawing.Size(444, 67);
+            this.Size = new System.Drawing.Size(481, 67);
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
             this.ResumeLayout(false);
