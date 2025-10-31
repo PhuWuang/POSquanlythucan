@@ -17,6 +17,7 @@ namespace QLBanDoAnNhanh
     {
         private PosFastFood _posFastFood;
         private int _idProduct;
+        private bool _isImageChanged = false;
         public frmEditItem(int idProduct, PosFastFood posFastFood)
         {
             InitializeComponent();
@@ -62,6 +63,7 @@ namespace QLBanDoAnNhanh
                 {
                     string imagePath = openFileDialog.FileName;
                     picProduct.Image = System.Drawing.Image.FromFile(imagePath);
+                    _isImageChanged = true;
                 }
             }
         }
@@ -85,11 +87,14 @@ namespace QLBanDoAnNhanh
             productToUpdate.Descriptions = tbDecript.Text.Trim();
             productToUpdate.IdTypeProduct = (int)cbType.SelectedValue;
 
-            // Cập nhật hình ảnh nếu người dùng chọn ảnh mới
-            using (var ms = new System.IO.MemoryStream())
+            // Chỉ cập nhật hình ảnh NẾU người dùng đã tải lên ảnh mới
+            if (_isImageChanged)
             {
-                picProduct.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                productToUpdate.Images = ms.ToArray();
+                using (var ms = new System.IO.MemoryStream())
+                {
+                    picProduct.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    productToUpdate.Images = ms.ToArray();
+                }
             }
 
             // 4. Gọi xuống BLL để thực hiện cập nhật
