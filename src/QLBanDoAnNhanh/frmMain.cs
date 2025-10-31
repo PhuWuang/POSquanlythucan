@@ -17,7 +17,6 @@ namespace QLBanDoAnNhanh
     {
         private PosFastFood _posFastFood;
         private int _idEmployee;
-        private Item _itemProduct;
         private ItemOrder _itemOrder;
         private decimal _price = 0;
         private int _category = 1;
@@ -79,28 +78,31 @@ namespace QLBanDoAnNhanh
             // 3. Vòng lặp để hiển thị sản phẩm lên giao diện (phần này giữ nguyên như cũ)
             foreach (var item in productItems)
             {
-                _itemProduct = new Item();
-                _itemProduct.ID = item.IdProduct;
-                _itemProduct._Name = item.NameProduct;
-                _itemProduct.Price = (decimal)item.PriceProduct;
-                _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                var itemProduct = new Item();
+
+                // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                itemProduct.ID = item.IdProduct;
+                itemProduct._Name = item.NameProduct;
+                itemProduct.Price = (decimal)item.PriceProduct;
+                itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                 if (item.IsActive == true)
                 {
-                    _itemProduct.IsActive = false;
+                    itemProduct.IsActive = false;
                 }
                 else
                 {
-                    _itemProduct.IsActive = true;
+                    itemProduct.IsActive = true;
                 }
                 using (MemoryStream ms = new MemoryStream(item.Images))
                 {
                     Image image = Image.FromStream(ms);
-                    _itemProduct.BackgroundImage = image;
+                    itemProduct.BackgroundImage = image;
                 }
-                _itemProduct.Tag = item.IdProduct;
-                _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                _itemProduct.MouseDown += Item_RightClick;
-                flpItems.Controls.Add(_itemProduct);
+                itemProduct.Tag = item.IdProduct;
+                itemProduct.Click += new System.EventHandler(this.Item_Click);
+                itemProduct.MouseDown += Item_RightClick;
+                flpItems.Controls.Add(itemProduct);
                 CheckItemInOrder();
             }
         }
@@ -128,28 +130,31 @@ namespace QLBanDoAnNhanh
 
             foreach (var item in productItems)
             {
-                _itemProduct = new Item();
-                _itemProduct.ID = item.IdProduct;
-                _itemProduct._Name = item.NameProduct;
-                _itemProduct.Price = (decimal)item.PriceProduct;
-                _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                var itemProduct = new Item();
+
+                // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                itemProduct.ID = item.IdProduct;
+                itemProduct._Name = item.NameProduct;
+                itemProduct.Price = (decimal)item.PriceProduct;
+                itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                 if (item.IsActive == true)
                 {
-                    _itemProduct.IsActive = false;
+                    itemProduct.IsActive = false;
                 }
                 else
                 {
-                    _itemProduct.IsActive = true;
+                    itemProduct.IsActive = true;
                 }
                 using (MemoryStream ms = new MemoryStream(item.Images))
                 {
                     Image image = Image.FromStream(ms);
-                    _itemProduct.BackgroundImage = image;
+                    itemProduct.BackgroundImage = image;
                 }
-                _itemProduct.Tag = item.IdProduct;
-                _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                _itemProduct.MouseDown += Item_RightClick;
-                flpItems.Controls.Add(_itemProduct);
+                itemProduct.Tag = item.IdProduct;
+                itemProduct.Click += new System.EventHandler(this.Item_Click);
+                itemProduct.MouseDown += Item_RightClick;
+                flpItems.Controls.Add(itemProduct);
                 CheckItemInOrder();
             }
         }
@@ -179,28 +184,31 @@ namespace QLBanDoAnNhanh
 
             foreach (var item in productItems)
             {
-                _itemProduct = new Item();
-                _itemProduct.ID = item.IdProduct;
-                _itemProduct._Name = item.NameProduct;
-                _itemProduct.Price = (decimal)item.PriceProduct;
-                _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                var itemProduct = new Item();
+
+                // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                itemProduct.ID = item.IdProduct;
+                itemProduct._Name = item.NameProduct;
+                itemProduct.Price = (decimal)item.PriceProduct;
+                itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                 if (item.IsActive == true)
                 {
-                    _itemProduct.IsActive = false;
+                    itemProduct.IsActive = false;
                 }
                 else
                 {
-                    _itemProduct.IsActive = true;
+                    itemProduct.IsActive = true;
                 }
                 using (MemoryStream ms = new MemoryStream(item.Images))
                 {
                     Image image = Image.FromStream(ms);
-                    _itemProduct.BackgroundImage = image;
+                    itemProduct.BackgroundImage = image;
                 }
-                _itemProduct.Tag = item.IdProduct;
-                _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                _itemProduct.MouseDown += Item_RightClick;
-                flpItems.Controls.Add(_itemProduct);
+                itemProduct.Tag = item.IdProduct;
+                itemProduct.Click += new System.EventHandler(this.Item_Click);
+                itemProduct.MouseDown += Item_RightClick;
+                flpItems.Controls.Add(itemProduct);
                 CheckItemInOrder();
             }
         }
@@ -230,28 +238,31 @@ namespace QLBanDoAnNhanh
 
             foreach (var item in productItems)
             {
-                _itemProduct = new Item();
-                _itemProduct.ID = item.IdProduct;
-                _itemProduct._Name = item.NameProduct;
-                _itemProduct.Price = (decimal)item.PriceProduct;
-                _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                var itemProduct = new Item();
+
+                // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                itemProduct.ID = item.IdProduct;
+                itemProduct._Name = item.NameProduct;
+                itemProduct.Price = (decimal)item.PriceProduct;
+                itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                 if (item.IsActive == true)
                 {
-                    _itemProduct.IsActive = false;
+                    itemProduct.IsActive = false;
                 }
                 else
                 {
-                    _itemProduct.IsActive = true;
+                    itemProduct.IsActive = true;
                 }
                 using (MemoryStream ms = new MemoryStream(item.Images))
                 {
                     Image image = Image.FromStream(ms);
-                    _itemProduct.BackgroundImage = image;
+                    itemProduct.BackgroundImage = image;
                 }
-                _itemProduct.Tag = item.IdProduct;
-                _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                _itemProduct.MouseDown += Item_RightClick;
-                flpItems.Controls.Add(_itemProduct);
+                itemProduct.Tag = item.IdProduct;
+                itemProduct.Click += new System.EventHandler(this.Item_Click);
+                itemProduct.MouseDown += Item_RightClick;
+                flpItems.Controls.Add(itemProduct);
                 CheckItemInOrder();
             }
         }
@@ -281,28 +292,31 @@ namespace QLBanDoAnNhanh
 
             foreach (var item in productItems)
             {
-                _itemProduct = new Item();
-                _itemProduct.ID = item.IdProduct;
-                _itemProduct._Name = item.NameProduct;
-                _itemProduct.Price = (decimal)item.PriceProduct;
-                _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                var itemProduct = new Item();
+
+                // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                itemProduct.ID = item.IdProduct;
+                itemProduct._Name = item.NameProduct;
+                itemProduct.Price = (decimal)item.PriceProduct;
+                itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                 if (item.IsActive == true)
                 {
-                    _itemProduct.IsActive = false;
+                    itemProduct.IsActive = false;
                 }
                 else
                 {
-                    _itemProduct.IsActive = true;
+                    itemProduct.IsActive = true;
                 }
                 using (MemoryStream ms = new MemoryStream(item.Images))
                 {
                     Image image = Image.FromStream(ms);
-                    _itemProduct.BackgroundImage = image;
+                    itemProduct.BackgroundImage = image;
                 }
-                _itemProduct.Tag = item.IdProduct;
-                _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                _itemProduct.MouseDown += Item_RightClick;
-                flpItems.Controls.Add(_itemProduct);
+                itemProduct.Tag = item.IdProduct;
+                itemProduct.Click += new System.EventHandler(this.Item_Click);
+                itemProduct.MouseDown += Item_RightClick;
+                flpItems.Controls.Add(itemProduct);
                 CheckItemInOrder();
             }
         }
@@ -362,7 +376,7 @@ namespace QLBanDoAnNhanh
                 _itemOrder.Price = itemControl.Price;
                 _itemOrder._Date = DateTime.Now.ToString();
                 _itemOrder.Quantity = 1;
-                _itemOrder.Image = _itemProduct.BackgroundImage;
+                _itemOrder.Image = itemControl.BackgroundImage;
                 _itemOrder.LablePrice = itemControl.Price.ToString("0.00") + "$";
                 _itemOrder.Tag = itemControl.ID;
                 _itemOrder.upDown.ValueChanged += numQuantity_Valuechanged;
@@ -472,29 +486,31 @@ namespace QLBanDoAnNhanh
                     // Đoạn code vòng lặp foreach để hiển thị sản phẩm giữ nguyên như cũ
                     foreach (var item in productItem)
                     {
-                        // ... (toàn bộ code hiển thị item không thay đổi)
-                        _itemProduct = new Item();
-                        _itemProduct.ID = item.IdProduct;
-                        _itemProduct._Name = item.NameProduct;
-                        _itemProduct.Price = (decimal)item.PriceProduct;
-                        _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                        // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                        var itemProduct = new Item();
+
+                        // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                        itemProduct.ID = item.IdProduct;
+                        itemProduct._Name = item.NameProduct;
+                        itemProduct.Price = (decimal)item.PriceProduct;
+                        itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                         if (item.IsActive == true)
                         {
-                            _itemProduct.IsActive = false;
+                            itemProduct.IsActive = false;
                         }
                         else
                         {
-                            _itemProduct.IsActive = true;
+                            itemProduct.IsActive = true;
                         }
                         using (MemoryStream ms = new MemoryStream(item.Images))
                         {
                             Image image = Image.FromStream(ms);
-                            _itemProduct.BackgroundImage = image;
+                            itemProduct.BackgroundImage = image;
                         }
-                        _itemProduct.Tag = item.IdProduct;
-                        _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                        _itemProduct.MouseDown += Item_RightClick;
-                        flpItems.Controls.Add(_itemProduct);
+                        itemProduct.Tag = item.IdProduct;
+                        itemProduct.Click += new System.EventHandler(this.Item_Click);
+                        itemProduct.MouseDown += Item_RightClick;
+                        flpItems.Controls.Add(itemProduct);
                         CheckItemInOrder();
                     }
                 }
@@ -531,24 +547,31 @@ namespace QLBanDoAnNhanh
                 // Đoạn code vòng lặp foreach để hiển thị sản phẩm giữ nguyên như cũ
                 foreach (var item in productItem)
                 {
-                    // ... (toàn bộ code hiển thị item không thay đổi)
+                    // Tạo một biến mới chỉ tồn tại trong vòng lặp này
+                    var itemProduct = new Item();
+
+                    // Sử dụng biến "itemProduct" thay cho "_itemProduct"
+                    itemProduct.ID = item.IdProduct;
+                    itemProduct._Name = item.NameProduct;
+                    itemProduct.Price = (decimal)item.PriceProduct;
+                    itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
                     if (item.IsActive == true)
                     {
-                        _itemProduct.IsActive = false;
+                        itemProduct.IsActive = false;
                     }
                     else
                     {
-                        _itemProduct.IsActive = true;
+                        itemProduct.IsActive = true;
                     }
                     using (MemoryStream ms = new MemoryStream(item.Images))
                     {
                         Image image = Image.FromStream(ms);
-                        _itemProduct.BackgroundImage = image;
+                        itemProduct.BackgroundImage = image;
                     }
-                    _itemProduct.Tag = item.IdProduct;
-                    _itemProduct.Click += new System.EventHandler(this.Item_Click);
-                    _itemProduct.MouseDown += Item_RightClick;
-                    flpItems.Controls.Add(_itemProduct);
+                    itemProduct.Tag = item.IdProduct;
+                    itemProduct.Click += new System.EventHandler(this.Item_Click);
+                    itemProduct.MouseDown += Item_RightClick;
+                    flpItems.Controls.Add(itemProduct);
                     CheckItemInOrder();
                 }
             }
