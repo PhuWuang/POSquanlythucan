@@ -74,5 +74,10 @@ namespace QLBanDoAnNhanh.BLL
         {
             return _orderDAL.GetOrderById(orderId);
         }
+        // HÀM MỚI: Gọi xuống DAL để tìm kiếm hóa đơn
+        public List<Order> SearchOrders(int? orderId, DateTime? startDate, DateTime? endDate)
+        {
+            return _orderDAL.SearchOrders(orderId, startDate, endDate);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using QLBanDoAnNhanh.DAL.Models;
 using QLBanDoAnNhanh.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -35,6 +36,33 @@ namespace QLBanDoAnNhanh.DAL
                            .Include("Employee") // Lấy thông tin nhân viên
                            .Include("OrderDetails.Product") // Lấy chi tiết hóa đơn VÀ sản phẩm tương ứng
                            .FirstOrDefault(o => o.IdOrder == orderId);
+        }
+        // HÀM MỚI: Tìm kiếm hóa đơn theo nhiều tiêu chí
+        public List<Order> SearchOrders(int? orderId, DateTime? startDate, DateTime? endDate)
+        {
+            var query = _context.Orders.Include("Employee").AsQueryable();
+
+            // 1. Lọc theo Mã Hóa Đơn nếu có
+            if (orderId.HasValue)
+            {
+                query = query.Where(o => o.IdOrder == orderId.Value);
+            }
+
+            // 2. Lọc theo ngày bắt đầu nếu có
+            if (startDate.HasValue)
+            {
+                query = query.Where(o => o.CreateDate >= startDate.Value);
+            }
+
+            // 3. Lọc theo ngày kết thúc nếu có
+            if (endDate.HasValue)
+            {
+                // Thêm 1 ngày để bao gồm tất cả hóa đơn trong ngày kết thúc
+                var inclusiveEndDate = endDate.Value.Date.AddDays(1);
+                query = query.Where(o => o.CreateDate < inclusiveEndDate);
+            }
+
+            return query.OrderByDescending(o => o.CreateDate).ToList();
         }
     }
 

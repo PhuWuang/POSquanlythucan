@@ -53,5 +53,39 @@ namespace QLBanDoAnNhanh
         {
             this.Close();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            // Chuẩn bị tham số
+            int? orderId = null;
+            if (!string.IsNullOrWhiteSpace(txtSearchMaHD.Text) && int.TryParse(txtSearchMaHD.Text, out int id))
+            {
+                orderId = id;
+            }
+
+            DateTime startDate = dtpStartDate.Value.Date;
+            DateTime endDate = dtpEndDate.Value.Date;
+
+            // Gọi xuống BLL
+            var orderService = new QLBanDoAnNhanh.BLL.OrderService();
+            var searchResult = orderService.SearchOrders(orderId, startDate, endDate);
+
+            // Hiển thị kết quả (chúng ta sẽ tái cấu trúc phần này ngay sau đây)
+            var displayData = searchResult.Select(o => new {
+                MaHD = o.IdOrder,
+                NgayTao = o.CreateDate,
+                NhanVien = o.Employee?.NameEmployee,
+                TongTien = o.Total
+            }).ToList();
+
+            dgvInvoices.DataSource = displayData;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtSearchMaHD.Clear();
+            // Gọi lại sự kiện Load để tải lại toàn bộ danh sách
+            frmInvoiceList_Load(sender, e);
+        }
     }
 }
