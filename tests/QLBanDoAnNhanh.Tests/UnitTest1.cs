@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using QLBanDoAnNhanh.Models;
+using QLBanDoAnNhanh.DAL.Models;
 
 namespace QLBanDoAnNhanh.Tests
 {

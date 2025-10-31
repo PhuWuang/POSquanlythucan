@@ -11,6 +11,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using QLBanDoAnNhanh.BLL; // Để sử dụng EmployeeService
+using QLBanDoAnNhanh.Models; // Để sử dụng model Employee
 
 namespace QLBanDoAnNhanh
 {
@@ -61,16 +63,18 @@ namespace QLBanDoAnNhanh
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            _posFastFood = new PosFastFood();
+            // Các bước kiểm tra ô nhập trống vẫn giữ nguyên
             string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.\w{2,3})+)$";
-            Regex regex = new Regex(pattern);
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern);
             if (string.IsNullOrEmpty(tbEmail.Text))
             {
                 errorCheck.SetError(tbEmail, "Cannot empty!");
+                return; // Dừng lại nếu có lỗi
             }
             else if (regex.IsMatch(tbEmail.Text) == false)
             {
                 errorCheck.SetError(tbEmail, "Not formating email!");
+                return;
             }
             else
             {
@@ -79,25 +83,33 @@ namespace QLBanDoAnNhanh
             if (string.IsNullOrEmpty(tbPass.Text))
             {
                 errorCheck.SetError(tbPass, "Cannot empty!");
+                return;
             }
             else
             {
                 errorCheck.SetError(tbPass, "");
             }
-            var employee = _posFastFood.Employees.ToList();
-            bool checkLogin = false;
-            foreach (var emp in employee)
+
+            // ---- PHẦN LOGIC MỚI ----
+            // 1. Khởi tạo EmployeeService từ tầng BLL
+            var employeeService = new EmployeeService();
+
+            // 2. Gọi hàm ValidateLogin để kiểm tra
+            //    Hàm này sẽ trả về thông tin Employee nếu thành công, hoặc null nếu thất bại
+            Employee loggedInEmployee = employeeService.ValidateLogin(tbEmail.Text, tbPass.Text);
+
+            // 3. Kiểm tra kết quả
+            if (loggedInEmployee != null)
             {
-                if (string.Compare(tbEmail.Text, emp.Email, false) == 0 && string.Compare(tbPass.Text, emp.Password, false) == 0)
-                {
-                    checkLogin = true;
-                    Form frmmain = new frmMain(emp.IdEmployee, this);
-                    this.Hide();
-                    frmmain.Show();
-                }
+                // Đăng nhập thành công!
+                // Chúng ta có được Id của nhân viên từ loggedInEmployee.IdEmployee
+                Form frmmain = new frmMain(loggedInEmployee.IdEmployee, this);
+                this.Hide();
+                frmmain.Show();
             }
-            if (checkLogin == false)
+            else
             {
+                // Đăng nhập thất bại
                 MessageBox.Show("Login unsuccessful. Please check your username and password!");
             }
         }

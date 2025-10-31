@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\QLBanDoAnNhanh.DAL\QLBanDoAnNhanh.DAL.csproj">
+      <Project>{9ab22d88-f287-4729-93c5-863855148927}</Project>
+      <Name>QLBanDoAnNhanh.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\QLBanDoAnNhanh\QLBanDoAnNhanh.csproj">
       <Project>{8925203d-07f9-4786-a782-afcfe48f5ddb}</Project>
       <Name>QLBanDoAnNhanh</Name>

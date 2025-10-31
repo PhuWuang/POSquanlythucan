@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLBanDoAnNhanh.Models
+namespace QLBanDoAnNhanh.DAL.Models
 {
     public static class PriceHelper
     {
