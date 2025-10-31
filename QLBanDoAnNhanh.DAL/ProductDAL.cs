@@ -20,11 +20,12 @@ namespace QLBanDoAnNhanh.DAL
             return _context.Products.Where(p => p.IdTypeProduct == typeId).ToList();
         }
 
-        // HÀM MỚI: Tìm sản phẩm theo tên (không phân biệt hoa thường) và theo loại
+        // Hàm này tìm sản phẩm theo tên (không phân biệt hoa thường) và theo loại
         public List<Product> SearchByNameAndTypeId(string name, int typeId)
         {
+            // THAY ĐỔI DUY NHẤT NẰM Ở ĐÂY: Dùng .Contains() thay vì ==
             return _context.Products
-                           .Where(p => p.IdTypeProduct == typeId && p.NameProduct.ToLower() == name.ToLower())
+                           .Where(p => p.IdTypeProduct == typeId && p.NameProduct.ToLower().Contains(name.ToLower()))
                            .ToList();
         }
     }
