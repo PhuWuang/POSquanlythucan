@@ -70,6 +70,20 @@ namespace QLBanDoAnNhanh
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            // === BỔ SUNG ĐOẠN KIỂM TRA DỮ LIỆU ===
+            if (string.IsNullOrWhiteSpace(tbName.Text))
+            {
+                MessageBox.Show("Tên sản phẩm không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbName.Focus(); // Đưa con trỏ chuột về ô nhập tên
+                return; // Dừng lại, không thực hiện tiếp
+            }
+            if (string.IsNullOrWhiteSpace(tbPrice.Text) || !decimal.TryParse(tbPrice.Text, out _))
+            {
+                MessageBox.Show("Giá sản phẩm không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbPrice.Focus(); // Đưa con trỏ chuột về ô nhập giá
+                return; // Dừng lại
+            }
+            // =======================================
             // 1. Khởi tạo BLL
             var productService = new ProductService();
 
