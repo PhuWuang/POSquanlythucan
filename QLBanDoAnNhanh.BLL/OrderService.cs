@@ -64,5 +64,10 @@ namespace QLBanDoAnNhanh.BLL
             // 4. Gửi đối tượng Order hoàn chỉnh xuống DAL để lưu
             return _orderDAL.CreateOrder(order);
         }
+        // HÀM MỚI: Gọi xuống DAL để lấy danh sách hóa đơn
+        public List<Order> GetAllOrders()
+        {
+            return _orderDAL.GetAllOrders();
+        }
     }
 }

@@ -711,5 +711,11 @@ namespace QLBanDoAnNhanh
             e.Graphics.DrawString("Last bill", new Font("Arial", 18, FontStyle.Regular), Brushes.Black, new Point(60, y + 120));
             e.Graphics.DrawString((((decimal)0.05 * _price) + _price).ToString("0.00") + "$", new Font("Arial", 13, FontStyle.Regular), Brushes.Black, new Point(660, y + 120));
         }
+
+        private void guna2GradientTileButton1_Click(object sender, EventArgs e)
+        {
+            frmInvoiceList invoiceForm = new frmInvoiceList();
+            invoiceForm.ShowDialog();
+        }
     }
 }
