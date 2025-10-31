@@ -14,10 +14,16 @@ namespace QLBanDoAnNhanh.BLL
             _productDAL = new ProductDAL();
         }
 
-        // Hàm này chỉ đơn giản là gọi xuống DAL để lấy danh sách sản phẩm
+        // Hàm này gọi xuống DAL để lấy danh sách sản phẩm
         public List<Product> GetByTypeId(int typeId)
         {
             return _productDAL.GetByTypeId(typeId);
+        }
+
+        // HÀM MỚI: Gọi xuống DAL để thực hiện tìm kiếm
+        public List<Product> SearchByNameAndTypeId(string name, int typeId)
+        {
+            return _productDAL.SearchByNameAndTypeId(name, typeId);
         }
     }
 }

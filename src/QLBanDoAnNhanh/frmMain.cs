@@ -461,13 +461,18 @@ namespace QLBanDoAnNhanh
         {
             if (e.KeyCode == Keys.Enter)
             {
-                _posFastFood = new PosFastFood();
-                var productItem = _posFastFood.Products.Where(x => x.IdTypeProduct == _category && x.NameProduct.ToLower().Equals(txtSearch.Text.ToLower())).ToList();
+                // --- PHẦN CODE MỚI ---
+                var productService = new ProductService();
+                var productItem = productService.SearchByNameAndTypeId(txtSearch.Text.Trim(), _category);
+                // ----------------------
+
                 if (productItem.Count > 0)
                 {
                     flpItems.Controls.Clear();
+                    // Đoạn code vòng lặp foreach để hiển thị sản phẩm giữ nguyên như cũ
                     foreach (var item in productItem)
                     {
+                        // ... (toàn bộ code hiển thị item không thay đổi)
                         _itemProduct = new Item();
                         _itemProduct.ID = item.IdProduct;
                         _itemProduct._Name = item.NameProduct;
@@ -515,18 +520,18 @@ namespace QLBanDoAnNhanh
 
         private void picSearch_Click(object sender, EventArgs e)
         {
-            _posFastFood = new PosFastFood();
-            var productItem = _posFastFood.Products.Where(x => x.IdTypeProduct == _category && x.NameProduct.ToLower().Equals(txtSearch.Text.ToLower())).ToList();
+            // --- PHẦN CODE MỚI ---
+            var productService = new ProductService();
+            var productItem = productService.SearchByNameAndTypeId(txtSearch.Text.Trim(), _category);
+            // ----------------------
+
             if (productItem.Count > 0)
             {
                 flpItems.Controls.Clear();
+                // Đoạn code vòng lặp foreach để hiển thị sản phẩm giữ nguyên như cũ
                 foreach (var item in productItem)
                 {
-                    _itemProduct = new Item();
-                    _itemProduct.ID = item.IdProduct;
-                    _itemProduct._Name = item.NameProduct;
-                    _itemProduct.Price = (decimal)item.PriceProduct;
-                    _itemProduct.LablePrice = item.PriceProduct.Value.ToString("0.00") + "$";
+                    // ... (toàn bộ code hiển thị item không thay đổi)
                     if (item.IsActive == true)
                     {
                         _itemProduct.IsActive = false;
