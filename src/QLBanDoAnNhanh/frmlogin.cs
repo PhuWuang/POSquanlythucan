@@ -28,6 +28,7 @@ namespace QLBanDoAnNhanh
         private void frmlogin_Load(object sender, EventArgs e)
         {
             tbPass.PasswordChar = '*';
+            
         }
 
         private void tbEmail_Validating(object sender, CancelEventArgs e)

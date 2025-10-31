@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBanDoAnNhanh.BLL;
 
 namespace QLBanDoAnNhanh
 {
@@ -69,8 +70,13 @@ namespace QLBanDoAnNhanh
             lbCategory.Text = "Foods";
             _category = 1;
             flpItems.Controls.Clear();
-            _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 1).ToList();
+            // 1. Khởi tạo ProductService từ tầng BLL
+            var productService = new ProductService();
+
+            // 2. Gọi hàm để lấy danh sách sản phẩm thuộc loại "Foods" (có ID là 1)
+            var productItems = productService.GetByTypeId(1);
+
+            // 3. Vòng lặp để hiển thị sản phẩm lên giao diện (phần này giữ nguyên như cũ)
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -116,8 +122,10 @@ namespace QLBanDoAnNhanh
             lbCategory.Text = "Drink";
             _category = 2;
             flpItems.Controls.Clear();
-            _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 2).ToList();
+            var productService = new ProductService();
+
+            var productItems = productService.GetByTypeId(2);
+
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -142,8 +150,8 @@ namespace QLBanDoAnNhanh
                 _itemProduct.Click += new System.EventHandler(this.Item_Click);
                 _itemProduct.MouseDown += Item_RightClick;
                 flpItems.Controls.Add(_itemProduct);
+                CheckItemInOrder();
             }
-            CheckItemInOrder();
         }
 
         private void btnSnack_Click(object sender, EventArgs e)
@@ -165,8 +173,10 @@ namespace QLBanDoAnNhanh
             lbCategory.Text = "Snack";
             _category = 3;
             flpItems.Controls.Clear();
-            _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 3).ToList();
+            var productService = new ProductService();
+
+            var productItems = productService.GetByTypeId(3);
+
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -214,8 +224,10 @@ namespace QLBanDoAnNhanh
             lbCategory.Text = "Dessert";
             _category = 4;
             flpItems.Controls.Clear();
-            _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 4).ToList();
+            var productService = new ProductService();
+
+            var productItems = productService.GetByTypeId(4);
+
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
@@ -263,8 +275,10 @@ namespace QLBanDoAnNhanh
             lbCategory.Text = "Combo";
             _category = 5;
             flpItems.Controls.Clear();
-            _posFastFood = new PosFastFood();
-            var productItems = _posFastFood.Products.Where(x => x.IdTypeProduct == 5).ToList();
+            var productService = new ProductService();
+
+            var productItems = productService.GetByTypeId(5);
+
             foreach (var item in productItems)
             {
                 _itemProduct = new Item();
