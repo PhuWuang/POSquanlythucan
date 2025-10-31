@@ -44,5 +44,19 @@ namespace QLBanDoAnNhanh.DAL
         {
             return _context.Products.Any(p => p.NameProduct.ToLower() == name.ToLower());
         }
+        // HÀM MỚI: Cập nhật thông tin một sản phẩm đã có
+        public bool UpdateProduct(Product product)
+        {
+            // Đánh dấu đối tượng là đã bị thay đổi
+            _context.Entry(product).State = System.Data.Entity.EntityState.Modified;
+            return _context.SaveChanges() > 0;
+        }
+
+        // HÀM MỚI (Overload): Kiểm tra tên sản phẩm tồn tại, ngoại trừ chính nó
+        public bool ProductExists(string name, int currentProductId)
+        {
+            // Tìm bất kỳ sản phẩm nào có tên trùng, nhưng ID phải khác với ID sản phẩm đang sửa
+            return _context.Products.Any(p => p.NameProduct.ToLower() == name.ToLower() && p.IdProduct != currentProductId);
+        }
     }
 }

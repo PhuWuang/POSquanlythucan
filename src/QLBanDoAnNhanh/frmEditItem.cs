@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBanDoAnNhanh.BLL;
 
 namespace QLBanDoAnNhanh
 {
@@ -67,51 +68,43 @@ namespace QLBanDoAnNhanh
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var product = _posFastFood.Products.Find(_idProduct);
-            using (MemoryStream ms = new MemoryStream())
+            // 1. Khởi tạo BLL
+            var productService = new ProductService();
+
+            // 2. Lấy đối tượng Product hiện tại từ CSDL
+            var productToUpdate = productService.GetById(_idProduct);
+            if (productToUpdate == null)
             {
-                Image newImage = new Bitmap(picProduct.Image);
-                newImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] imageData = ms.ToArray();
-                product.Images = imageData;
+                MessageBox.Show("Không tìm thấy sản phẩm để cập nhật.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            if (string.IsNullOrEmpty(tbName.Text))
+
+            // 3. Cập nhật các thuộc tính của đối tượng với dữ liệu mới từ Form
+            productToUpdate.NameProduct = tbName.Text.Trim();
+            productToUpdate.PriceProduct = decimal.Parse(tbPrice.Text);
+            productToUpdate.Descriptions = tbDecript.Text.Trim();
+            productToUpdate.IdTypeProduct = (int)cbType.SelectedValue;
+
+            // Cập nhật hình ảnh nếu người dùng chọn ảnh mới
+            using (var ms = new System.IO.MemoryStream())
             {
-                errorCheck.SetError(tbName, "Cannot empty!");
+                picProduct.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                productToUpdate.Images = ms.ToArray();
+            }
+
+            // 4. Gọi xuống BLL để thực hiện cập nhật
+            bool success = productService.UpdateProduct(productToUpdate);
+
+            // 5. Xử lý kết quả
+            if (success)
+            {
+                MessageBox.Show("Cập nhật sản phẩm thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
-                product.NameProduct = tbName.Text;
-                errorCheck.SetError(tbName, "");
-            }
-            decimal price;
-            if (string.IsNullOrEmpty(tbPrice.Text))
-            {
-                errorCheck.SetError(tbPrice, "Cannot empty!");
-            }
-            else if (decimal.TryParse(tbPrice.Text, out price) == false)
-            {
-                errorCheck.SetError(tbPrice, "Only number!");
-            }
-            else
-            {
-                product.PriceProduct = price;
-                errorCheck.SetError(tbPrice, "");
-            }
-            product.IdTypeProduct = int.Parse(cbType.SelectedValue.ToString());
-            if (string.IsNullOrWhiteSpace(tbDecript.Text) == false)
-            {
-                product.Descriptions = tbDecript.Text;
-            }
-            product.IsActive = true;
-            if (string.IsNullOrEmpty(errorCheck.GetError(tbName)) == true && string.IsNullOrEmpty(errorCheck.GetError(tbName)) == true)
-            {
-                DialogResult dialog = MessageBox.Show("Success!", "Notify", MessageBoxButtons.OK);
-                if (dialog == DialogResult.OK)
-                {
-                    _posFastFood.SaveChanges();
-                    this.Close();
-                }
+                MessageBox.Show("Cập nhật thất bại. Tên sản phẩm có thể đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

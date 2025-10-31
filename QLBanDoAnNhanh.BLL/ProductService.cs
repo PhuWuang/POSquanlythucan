@@ -38,5 +38,22 @@ namespace QLBanDoAnNhanh.BLL
             // Nếu tên hợp lệ, gọi xuống DAL để lưu
             return _productDAL.CreateProduct(product);
         }
+        // HÀM MỚI: Xử lý nghiệp vụ cập nhật sản phẩm
+        public bool UpdateProduct(Product product)
+        {
+            // Logic nghiệp vụ: không cho phép đổi tên thành một sản phẩm khác đã tồn tại
+            if (_productDAL.ProductExists(product.NameProduct, product.IdProduct))
+            {
+                return false; // Trả về false nếu tên đã tồn tại ở một sản phẩm khác
+            }
+
+            // Nếu tên hợp lệ, gọi xuống DAL để cập nhật
+            return _productDAL.UpdateProduct(product);
+        }
+        // HÀM BỔ SUNG: Lấy thông tin chi tiết một sản phẩm theo ID
+        public Product GetById(int id)
+        {
+            return _productDAL.GetById(id);
+        }
     }
 }
