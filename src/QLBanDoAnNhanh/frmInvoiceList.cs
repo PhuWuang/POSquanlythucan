@@ -34,5 +34,24 @@ namespace QLBanDoAnNhanh
 
             dgvInvoices.DataSource = displayData;
         }
+
+        private void dgvInvoices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Đảm bảo người dùng không nhấn vào header
+            if (e.RowIndex >= 0)
+            {
+                // Lấy ID của hóa đơn từ cột "MaHD" của dòng được nhấn
+                int orderId = (int)dgvInvoices.Rows[e.RowIndex].Cells["MaHD"].Value;
+
+                // Tạo và hiển thị form chi tiết, truyền ID qua
+                frmInvoiceDetail detailForm = new frmInvoiceDetail(orderId);
+                detailForm.ShowDialog();
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

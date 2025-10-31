@@ -82,6 +82,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmInvoiceDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvoiceDetail.Designer.cs">
+      <DependentUpon>frmInvoiceDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInvoiceList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditItem.resx">
       <DependentUpon>frmEditItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvoiceDetail.resx">
+      <DependentUpon>frmInvoiceDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInvoiceList.resx">
       <DependentUpon>frmInvoiceList.cs</DependentUpon>

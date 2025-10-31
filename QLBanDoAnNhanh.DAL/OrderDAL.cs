@@ -28,6 +28,14 @@ namespace QLBanDoAnNhanh.DAL
             // .Include("Employee") sẽ tự động join với bảng Employee
             return _context.Orders.Include("Employee").OrderByDescending(o => o.CreateDate).ToList();
         }
+        // HÀM MỚI: Lấy thông tin chi tiết của một hóa đơn duy nhất
+        public Order GetOrderById(int orderId)
+        {
+            return _context.Orders
+                           .Include("Employee") // Lấy thông tin nhân viên
+                           .Include("OrderDetails.Product") // Lấy chi tiết hóa đơn VÀ sản phẩm tương ứng
+                           .FirstOrDefault(o => o.IdOrder == orderId);
+        }
     }
 
 }

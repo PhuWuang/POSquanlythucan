@@ -69,5 +69,10 @@ namespace QLBanDoAnNhanh.BLL
         {
             return _orderDAL.GetAllOrders();
         }
+        // HÀM MỚI: Gọi xuống DAL để lấy chi tiết hóa đơn
+        public Order GetOrderById(int orderId)
+        {
+            return _orderDAL.GetOrderById(orderId);
+        }
     }
 }
