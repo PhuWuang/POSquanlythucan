@@ -58,5 +58,20 @@ namespace QLBanDoAnNhanh.DAL
             // Tìm bất kỳ sản phẩm nào có tên trùng, nhưng ID phải khác với ID sản phẩm đang sửa
             return _context.Products.Any(p => p.NameProduct.ToLower() == name.ToLower() && p.IdProduct != currentProductId);
         }
+        // HÀM MỚI: Kiểm tra xem sản phẩm có nằm trong bất kỳ chi tiết hóa đơn nào không
+        public bool IsProductInAnyOrder(int productId)
+        {
+            return _context.OrderDetails.Any(od => od.IdProduct == productId);
+        }
+
+        // HÀM MỚI: Xóa vĩnh viễn một sản phẩm khỏi CSDL
+        public bool DeleteProductById(int productId)
+        {
+            var product = _context.Products.Find(productId);
+            if (product == null) return false;
+
+            _context.Products.Remove(product);
+            return _context.SaveChanges() > 0;
+        }
     }
 }

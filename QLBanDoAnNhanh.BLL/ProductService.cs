@@ -55,5 +55,38 @@ namespace QLBanDoAnNhanh.BLL
         {
             return _productDAL.GetById(id);
         }
+        // HÀM MỚI: Xử lý nghiệp vụ xóa hoặc ẩn sản phẩm
+        // Trả về chuỗi để báo cho UI biết hành động nào đã được thực hiện
+        public string DeleteProduct(int productId)
+        {
+            // Lấy thông tin sản phẩm
+            var product = _productDAL.GetById(productId);
+            if (product == null)
+            {
+                return "NotFound"; // Sản phẩm không tồn tại
+            }
+
+            // Logic nghiệp vụ cốt lõi:
+            // Kiểm tra xem sản phẩm có trong hóa đơn nào không
+            if (_productDAL.IsProductInAnyOrder(productId))
+            {
+                // Nếu có, chỉ ẩn đi (chuyển IsActive = false)
+                product.IsActive = false;
+                if (_productDAL.UpdateProduct(product))
+                {
+                    return "Deactivated"; // Báo là đã ẩn
+                }
+            }
+            else
+            {
+                // Nếu không, xóa vĩnh viễn
+                if (_productDAL.DeleteProductById(productId))
+                {
+                    return "Deleted"; // Báo là đã xóa
+                }
+            }
+
+            return "Error"; // Nếu có lỗi xảy ra
+        }
     }
 }
