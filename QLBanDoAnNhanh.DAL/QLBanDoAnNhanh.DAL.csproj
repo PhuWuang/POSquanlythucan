@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderDAL.cs" />
     <Compile Include="ProductDAL.cs" />
     <Compile Include="EmployeeDAL.cs" />
     <Compile Include="models\Employee.cs" />

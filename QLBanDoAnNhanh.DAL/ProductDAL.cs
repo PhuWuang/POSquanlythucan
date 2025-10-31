@@ -28,5 +28,9 @@ namespace QLBanDoAnNhanh.DAL
                            .Where(p => p.IdTypeProduct == typeId && p.NameProduct.ToLower().Contains(name.ToLower()))
                            .ToList();
         }
+        public Product GetById(int id)
+        {
+            return _context.Products.Find(id);
+        }
     }
 }

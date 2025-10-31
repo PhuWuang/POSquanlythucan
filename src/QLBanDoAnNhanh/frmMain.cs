@@ -573,45 +573,44 @@ namespace QLBanDoAnNhanh
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            // 1) Nếu cần tổng SL để hiển thị, chỉ tính tạm (KHÔNG lưu vào Orders)
-            int totalQuantity = 0;
-            foreach (Control control in flpOrder.Controls)
-                if (control is ItemOrder it) totalQuantity += it.Quantity;
-
-            // 2) Tạo Order (KHÔNG có thuộc tính quantity trong Order)
-            var order = new Order
+            // Kiểm tra xem có món nào trong giỏ hàng không
+            if (flpOrder.Controls.Count == 0)
             {
-                Total = _price + (_price * 0.05m), // VAT 5%
-                CreateDate = DateTime.Now,
-                IdEmployee = _idEmployee,
-                OrderDetails = new List<OrderDetail>() // quan trọng: khởi tạo list
-            };
+                MessageBox.Show("Vui lòng chọn món ăn trước khi thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-            // 3) Thêm các dòng chi tiết
+            // 1. Chuẩn bị dữ liệu để gửi cho BLL
+            var items = new Dictionary<int, int>();
             foreach (Control control in flpOrder.Controls)
             {
-                if (control is ItemOrder item)
+                if (control is ItemOrder itemOrder)
                 {
-                    // item.Tag thường là IdProduct; ép kiểu an toàn
-                    var productId = (item.Tag is int pid) ? pid : Convert.ToInt32(item.Tag);
-                    var product = _posFastFood.Products.Find(productId);
-                    if (product == null) continue; // hoặc throw/MessageBox tùy ý
-
-                    order.OrderDetails.Add(new OrderDetail
-                    {
-                        IdProduct = product.IdProduct,
-                        quantity = item.Quantity
-                        // IdOrder sẽ được EF tự set sau khi insert Order
-                    });
+                    items.Add(itemOrder.ID, itemOrder.Quantity);
                 }
             }
 
-            // 4) Lưu
-            _posFastFood.Orders.Add(order);
-            _posFastFood.SaveChanges();
+            // 2. Gọi xuống BLL để xử lý
+            var orderService = new OrderService();
+            bool success = orderService.CreateOrder(_idEmployee, items);
 
-            MessageBox.Show("Success!!");
-            frmMain_Load(sender, e);
+            // 3. Xử lý kết quả trả về từ BLL
+            if (success)
+            {
+                MessageBox.Show("Thanh toán thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Xóa giỏ hàng và reset giao diện sau khi thanh toán
+                flpOrder.Controls.Clear();
+                _price = 0;
+                lbVAT.Text = "+0.00$";
+                lbTotal.Text = "0.00$";
+                lbLastPrice.Text = "0.00$";
+                // Tải lại danh sách sản phẩm để cập nhật trạng thái
+                frmMain_Load(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Đã có lỗi xảy ra trong quá trình thanh toán.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void guna2ControlBox1_Click(object sender, EventArgs e)
