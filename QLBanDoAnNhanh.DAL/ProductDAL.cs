@@ -32,5 +32,17 @@ namespace QLBanDoAnNhanh.DAL
         {
             return _context.Products.Find(id);
         }
+        // HÀM MỚI: Thêm một sản phẩm mới vào CSDL
+        public bool CreateProduct(Product product)
+        {
+            _context.Products.Add(product);
+            return _context.SaveChanges() > 0;
+        }
+
+        // HÀM MỚI: Kiểm tra xem tên sản phẩm đã tồn tại chưa (không phân biệt hoa thường)
+        public bool ProductExists(string name)
+        {
+            return _context.Products.Any(p => p.NameProduct.ToLower() == name.ToLower());
+        }
     }
 }

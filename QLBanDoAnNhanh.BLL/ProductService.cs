@@ -25,5 +25,18 @@ namespace QLBanDoAnNhanh.BLL
         {
             return _productDAL.SearchByNameAndTypeId(name, typeId);
         }
+        // HÀM MỚI: Xử lý nghiệp vụ thêm sản phẩm
+        public bool CreateProduct(Product product)
+        {
+            // Logic nghiệp vụ: không cho phép thêm sản phẩm có tên đã tồn tại
+            if (_productDAL.ProductExists(product.NameProduct))
+            {
+                // Trả về false nếu tên đã tồn tại
+                return false;
+            }
+
+            // Nếu tên hợp lệ, gọi xuống DAL để lưu
+            return _productDAL.CreateProduct(product);
+        }
     }
 }

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBanDoAnNhanh.BLL;
 
 namespace QLBanDoAnNhanh
 {
@@ -48,85 +49,56 @@ namespace QLBanDoAnNhanh
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var hasError = false;
-            var product = new Product();
-
-            // Ảnh (nếu bắt buộc có ảnh thì validate thêm)
-            if (picProduct.Image != null)
-            {
-                using (var ms = new MemoryStream())
-                {
-                    picProduct.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    product.Images = ms.ToArray();
-                }
-            }
-
-            // NAME
+            // 1. Thu thập dữ liệu từ Form và kiểm tra (phần này tương tự code cũ)
             if (string.IsNullOrWhiteSpace(tbName.Text))
             {
-                errorCheck.SetError(tbName, "Cannot empty!");
-                hasError = true;
-            }
-            else
-            {
-                product.NameProduct = tbName.Text.Trim();
-                errorCheck.SetError(tbName, "");
-            }
-
-            // PRICE (xử lý dấu ,/.)
-            decimal price;
-            var priceText = tbPrice.Text.Trim().Replace(",", "."); // nếu người dùng gõ dấu phẩy
-            if (string.IsNullOrWhiteSpace(priceText))
-            {
-                errorCheck.SetError(tbPrice, "Cannot empty!");
-                hasError = true;
-            }
-            else if (!decimal.TryParse(priceText, NumberStyles.Any, CultureInfo.InvariantCulture, out price))
-            {
-                errorCheck.SetError(tbPrice, "Only number!");
-                hasError = true;
-            }
-            else
-            {
-                product.PriceProduct = price;
-                errorCheck.SetError(tbPrice, "");
-            }
-
-            // TYPE
-            if (cbType.SelectedValue == null || !int.TryParse(cbType.SelectedValue.ToString(), out var typeId))
-            {
-                MessageBox.Show("Chưa chọn Type hợp lệ");
+                errorCheck.SetError(tbName, "Tên không được để trống!");
                 return;
             }
-            product.IdTypeProduct = typeId;
-
-            // EMP + DESC + ACTIVE
-            product.IdEmployee = _idEmployee;
-            if (!string.IsNullOrWhiteSpace(tbDecript.Text))
-                product.Descriptions = tbDecript.Text.Trim();
-            product.IsActive = true;
-
-            // Nếu còn lỗi thì dừng
-            if (hasError) return;
-
-            // Lưu DB xong mới thông báo
-            try
+            if (string.IsNullOrWhiteSpace(tbPrice.Text) || !decimal.TryParse(tbPrice.Text, out decimal price))
             {
-                _posFastFood.Products.Add(product);
-                var affected = _posFastFood.SaveChanges();
-                if (affected > 0)
-                {
-                    this.DialogResult = DialogResult.OK; // báo cho form gọi biết: đã thêm xong
-                    this.Close();                         // đóng form Add
-                }
-                else
-                {
-                    MessageBox.Show("Insert failed (no rows affected).");
-                }
+                errorCheck.SetError(tbPrice, "Giá không hợp lệ!");
+                return;
             }
-            catch (Exception ex)
+            if (picProduct.Image == null)
             {
-                MessageBox.Show("Save failed: " + ex.Message);
+                MessageBox.Show("Vui lòng chọn hình ảnh cho sản phẩm.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Tạo đối tượng Product từ dữ liệu đã thu thập
+            var product = new Product
+            {
+                NameProduct = tbName.Text.Trim(),
+                PriceProduct = price,
+                Descriptions = tbDecript.Text.Trim(),
+                IdTypeProduct = (int)cbType.SelectedValue,
+                IdEmployee = _idEmployee,
+                IsActive = true
+            };
+
+            // Chuyển đổi hình ảnh thành byte array
+            using (var ms = new System.IO.MemoryStream())
+            {
+                picProduct.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                product.Images = ms.ToArray();
+            }
+
+            // 3. Gọi xuống BLL để xử lý
+            var productService = new ProductService();
+            bool success = productService.CreateProduct(product);
+
+            // 4. Xử lý kết quả trả về
+            if (success)
+            {
+                MessageBox.Show("Thêm sản phẩm thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK; // Báo cho form chính biết để tải lại danh sách
+                this.Close();
+            }
+            else
+            {
+                // Lỗi có thể do tên trùng lặp hoặc do lỗi lưu CSDL
+                MessageBox.Show("Thêm sản phẩm thất bại. Tên sản phẩm có thể đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
