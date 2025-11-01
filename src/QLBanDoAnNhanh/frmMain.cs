@@ -52,8 +52,8 @@ namespace QLBanDoAnNhanh
 
         private void btnFoods_Click(object sender, EventArgs e)
         {
-            btnFoods.FillColor = Color.FromArgb(249, 130, 68);
-            btnFoods.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnFoods.FillColor = Color.FromArgb(179, 229, 252);
+            btnFoods.FillColor2 = Color.FromArgb(187, 222, 251);
             btnDrink.FillColor = Color.Transparent;
             btnDrink.FillColor2 = Color.Transparent;
             btnSnack.FillColor = Color.Transparent;
@@ -111,8 +111,8 @@ namespace QLBanDoAnNhanh
         {
             btnFoods.FillColor = Color.Transparent;
             btnFoods.FillColor2 = Color.Transparent;
-            btnDrink.FillColor = Color.FromArgb(249, 130, 68);
-            btnDrink.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnDrink.FillColor = Color.FromArgb(179, 229, 252);
+            btnDrink.FillColor2 = Color.FromArgb(187, 222, 251);
             btnSnack.FillColor = Color.Transparent;
             btnSnack.FillColor2 = Color.Transparent;
             btnDessert.FillColor = Color.Transparent;
@@ -165,8 +165,8 @@ namespace QLBanDoAnNhanh
             btnFoods.FillColor2 = Color.Transparent;
             btnDrink.FillColor = Color.Transparent;
             btnDrink.FillColor2 = Color.Transparent;
-            btnSnack.FillColor = Color.FromArgb(249, 130, 68);
-            btnSnack.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnSnack.FillColor = Color.FromArgb(179, 229, 252);
+            btnSnack.FillColor2 = Color.FromArgb(187, 222, 251);
             btnDessert.FillColor = Color.Transparent;
             btnDessert.FillColor2 = Color.Transparent;
             btnCombo.FillColor = Color.Transparent;
@@ -221,8 +221,8 @@ namespace QLBanDoAnNhanh
             btnDrink.FillColor2 = Color.Transparent;
             btnSnack.FillColor = Color.Transparent;
             btnSnack.FillColor2 = Color.Transparent;
-            btnDessert.FillColor = Color.FromArgb(249, 130, 68);
-            btnDessert.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnDessert.FillColor = Color.FromArgb(179, 229, 252);
+            btnDessert.FillColor2 = Color.FromArgb(187, 222, 251);
             btnCombo.FillColor = Color.Transparent;
             btnCombo.FillColor2 = Color.Transparent;
             btnAdditem.FillColor = Color.Transparent;
@@ -277,8 +277,8 @@ namespace QLBanDoAnNhanh
             btnSnack.FillColor2 = Color.Transparent;
             btnDessert.FillColor = Color.Transparent;
             btnDessert.FillColor2 = Color.Transparent;
-            btnCombo.FillColor = Color.FromArgb(249, 130, 68);
-            btnCombo.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnCombo.FillColor = Color.FromArgb(179, 229, 252);
+            btnCombo.FillColor2 = Color.FromArgb(187, 222, 251);
             btnAdditem.FillColor = Color.Transparent;
             btnAdditem.FillColor2 = Color.Transparent;
             btnSetting.FillColor = Color.Transparent;
@@ -333,8 +333,8 @@ namespace QLBanDoAnNhanh
             btnDessert.FillColor2 = Color.Transparent;
             btnCombo.FillColor = Color.Transparent;
             btnCombo.FillColor2 = Color.Transparent;
-            btnAdditem.FillColor = Color.FromArgb(249, 130, 68);
-            btnAdditem.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnAdditem.FillColor = Color.FromArgb(179, 229, 252);
+            btnAdditem.FillColor2 = Color.FromArgb(187, 222, 251);
             btnSetting.FillColor = Color.Transparent;
             btnSetting.FillColor2 = Color.Transparent;
             _posFastFood = new PosFastFood();
@@ -661,8 +661,8 @@ namespace QLBanDoAnNhanh
             btnCombo.FillColor2 = Color.Transparent;
             btnAdditem.FillColor = Color.Transparent;
             btnAdditem.FillColor2 = Color.Transparent;
-            btnSetting.FillColor = Color.FromArgb(249, 130, 68);
-            btnSetting.FillColor2 = Color.FromArgb(247, 72, 115);
+            btnSetting.FillColor = Color.FromArgb(179, 229, 252);
+            btnSetting.FillColor2 = Color.FromArgb(187, 222, 251);
             Form frmchangePass = new frmChangePass(_idEmployee);
             frmchangePass.ShowDialog();
         }

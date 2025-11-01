@@ -32,12 +32,16 @@
             this.tbNewpass = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbOldpass = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.cbShow = new System.Windows.Forms.CheckBox();
             this.btnConfr = new Guna.UI2.WinForms.Guna2Button();
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.picShowHide1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.picShowHide2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowHide1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowHide2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbNewpass
@@ -51,9 +55,9 @@
             this.tbNewpass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbNewpass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbNewpass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbNewpass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbNewpass.Font = new System.Drawing.Font("UTM Alexander", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNewpass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbNewpass.Location = new System.Drawing.Point(41, 27);
+            this.tbNewpass.Location = new System.Drawing.Point(76, 79);
             this.tbNewpass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbNewpass.Name = "tbNewpass";
             this.tbNewpass.PasswordChar = '*';
@@ -73,9 +77,9 @@
             this.tbOldpass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbOldpass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbOldpass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbOldpass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbOldpass.Font = new System.Drawing.Font("UTM Alexander", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOldpass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbOldpass.Location = new System.Drawing.Point(41, 81);
+            this.tbOldpass.Location = new System.Drawing.Point(76, 133);
             this.tbOldpass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbOldpass.Name = "tbOldpass";
             this.tbOldpass.PasswordChar = '*';
@@ -88,7 +92,9 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.cbShow);
+            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.picShowHide2);
+            this.guna2Panel1.Controls.Add(this.picShowHide1);
             this.guna2Panel1.Controls.Add(this.btnConfr);
             this.guna2Panel1.Controls.Add(this.btnExit);
             this.guna2Panel1.Controls.Add(this.tbOldpass);
@@ -96,22 +102,8 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(430, 231);
+            this.guna2Panel1.Size = new System.Drawing.Size(492, 278);
             this.guna2Panel1.TabIndex = 2;
-            // 
-            // cbShow
-            // 
-            this.cbShow.AutoSize = true;
-            this.cbShow.BackColor = System.Drawing.Color.Transparent;
-            this.cbShow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbShow.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbShow.Location = new System.Drawing.Point(41, 133);
-            this.cbShow.Name = "cbShow";
-            this.cbShow.Size = new System.Drawing.Size(61, 21);
-            this.cbShow.TabIndex = 2;
-            this.cbShow.Text = "Show";
-            this.cbShow.UseVisualStyleBackColor = false;
-            this.cbShow.CheckedChanged += new System.EventHandler(this.cbShow_CheckedChanged);
             // 
             // btnConfr
             // 
@@ -122,9 +114,9 @@
             this.btnConfr.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnConfr.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnConfr.FillColor = System.Drawing.Color.Red;
-            this.btnConfr.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnConfr.Font = new System.Drawing.Font("UTM Alexander", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfr.ForeColor = System.Drawing.Color.White;
-            this.btnConfr.Location = new System.Drawing.Point(264, 171);
+            this.btnConfr.Location = new System.Drawing.Point(299, 223);
             this.btnConfr.Name = "btnConfr";
             this.btnConfr.Size = new System.Drawing.Size(120, 34);
             this.btnConfr.TabIndex = 4;
@@ -139,9 +131,9 @@
             this.btnExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnExit.Font = new System.Drawing.Font("UTM Alexander", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(41, 171);
+            this.btnExit.Location = new System.Drawing.Point(76, 223);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(120, 34);
             this.btnExit.TabIndex = 3;
@@ -152,11 +144,50 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // picShowHide1
+            // 
+            this.picShowHide1.BackColor = System.Drawing.Color.Transparent;
+            this.picShowHide1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picShowHide1.Image = global::QLBanDoAnNhanh.Properties.Resources.eye_open;
+            this.picShowHide1.ImageRotate = 0F;
+            this.picShowHide1.Location = new System.Drawing.Point(381, 83);
+            this.picShowHide1.Name = "picShowHide1";
+            this.picShowHide1.Size = new System.Drawing.Size(29, 26);
+            this.picShowHide1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picShowHide1.TabIndex = 16;
+            this.picShowHide1.TabStop = false;
+            this.picShowHide1.Click += new System.EventHandler(this.picShowHide1_Click);
+            // 
+            // picShowHide2
+            // 
+            this.picShowHide2.BackColor = System.Drawing.Color.Transparent;
+            this.picShowHide2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picShowHide2.Image = global::QLBanDoAnNhanh.Properties.Resources.eye_open;
+            this.picShowHide2.ImageRotate = 0F;
+            this.picShowHide2.Location = new System.Drawing.Point(381, 136);
+            this.picShowHide2.Name = "picShowHide2";
+            this.picShowHide2.Size = new System.Drawing.Size(29, 26);
+            this.picShowHide2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picShowHide2.TabIndex = 17;
+            this.picShowHide2.TabStop = false;
+            this.picShowHide2.Click += new System.EventHandler(this.picShowHide2_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("UTM Alexander", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(128, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(230, 40);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "ĐỔI MẬT KHẨU";
+            // 
             // frmChangePass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 231);
+            this.ClientSize = new System.Drawing.Size(492, 278);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmChangePass";
@@ -165,6 +196,8 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowHide1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowHide2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,6 +210,8 @@
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private Guna.UI2.WinForms.Guna2Button btnConfr;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.CheckBox cbShow;
+        private Guna.UI2.WinForms.Guna2PictureBox picShowHide2;
+        private Guna.UI2.WinForms.Guna2PictureBox picShowHide1;
+        private System.Windows.Forms.Label label1;
     }
 }

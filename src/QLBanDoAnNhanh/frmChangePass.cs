@@ -63,20 +63,45 @@ namespace QLBanDoAnNhanh
                 }
             }
         }
-
-        private void cbShow_CheckedChanged(object sender, EventArgs e)
+        private void picShowHide2_Click(object sender, EventArgs e)
         {
-            if (cbShow.Checked == true)
+            // Kiểm tra xem mật khẩu đang bị che hay không
+            if (tbOldpass.PasswordChar == '*')
             {
-                cbShow.Text = "Hide";
-                tbNewpass.PasswordChar = '\0';
-                tbOldpass.PasswordChar = '\0';
+                // Nếu đang bị che, thì hiện nó ra
+                tbOldpass.PasswordChar = '\0'; // Ký tự null sẽ hiển thị text bình thường
+
+                // Đổi ảnh của PictureBox thành con mắt bị gạch chéo
+                picShowHide2.Image = Properties.Resources.eye_slash; // <-- THAY BẰNG TÊN ẢNH CON MẮT GẠCH CHÉO
             }
             else
             {
-                cbShow.Text = "Show";
-                tbNewpass.PasswordChar = '*';
+                // Nếu đang hiện, thì che nó đi
                 tbOldpass.PasswordChar = '*';
+
+                // Đổi ảnh của PictureBox về con mắt mở
+                picShowHide2.Image = Properties.Resources.eye_open; // <-- THAY BẰNG TÊN ẢNH CON MẮT MỞ
+            }
+        }
+
+        private void picShowHide1_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem mật khẩu đang bị che hay không
+            if (tbNewpass.PasswordChar == '*')
+            {
+                // Nếu đang bị che, thì hiện nó ra
+                tbNewpass.PasswordChar = '\0'; // Ký tự null sẽ hiển thị text bình thường
+
+                // Đổi ảnh của PictureBox thành con mắt bị gạch chéo
+                picShowHide1.Image = Properties.Resources.eye_slash; // <-- THAY BẰNG TÊN ẢNH CON MẮT GẠCH CHÉO
+            }
+            else
+            {
+                // Nếu đang hiện, thì che nó đi
+                tbNewpass.PasswordChar = '*';
+
+                // Đổi ảnh của PictureBox về con mắt mở
+                picShowHide1.Image = Properties.Resources.eye_open; // <-- THAY BẰNG TÊN ẢNH CON MẮT MỞ
             }
         }
     }
