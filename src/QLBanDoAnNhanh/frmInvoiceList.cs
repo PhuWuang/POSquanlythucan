@@ -26,10 +26,10 @@ namespace QLBanDoAnNhanh
             // 2. Xử lý và hiển thị dữ liệu lên DataGridView
             // Chúng ta tạo một danh sách tạm (anonymous list) chỉ chứa các cột cần thiết
             var displayData = allOrders.Select(o => new {
-                MaHD = o.IdOrder,
-                NgayTao = o.CreateDate,
-                NhanVien = o.Employee?.NameEmployee, // Dùng "?." để tránh lỗi nếu nhân viên null
-                TongTien = o.Total
+                ID = o.IdOrder,
+                Date = o.CreateDate,
+                Employee = o.Employee?.NameEmployee, // Dùng "?." để tránh lỗi nếu nhân viên null
+                Total = o.Total?.ToString("N2") + " $"
             }).ToList();
 
             dgvInvoices.DataSource = displayData;
@@ -41,7 +41,7 @@ namespace QLBanDoAnNhanh
             if (e.RowIndex >= 0)
             {
                 // Lấy ID của hóa đơn từ cột "MaHD" của dòng được nhấn
-                int orderId = (int)dgvInvoices.Rows[e.RowIndex].Cells["MaHD"].Value;
+                int orderId = (int)dgvInvoices.Rows[e.RowIndex].Cells["ID"].Value;
 
                 // Tạo và hiển thị form chi tiết, truyền ID qua
                 frmInvoiceDetail detailForm = new frmInvoiceDetail(orderId);
@@ -72,10 +72,10 @@ namespace QLBanDoAnNhanh
 
             // Hiển thị kết quả (chúng ta sẽ tái cấu trúc phần này ngay sau đây)
             var displayData = searchResult.Select(o => new {
-                MaHD = o.IdOrder,
-                NgayTao = o.CreateDate,
-                NhanVien = o.Employee?.NameEmployee,
-                TongTien = o.Total
+                ID = o.IdOrder,
+                Date = o.CreateDate,
+                Employee = o.Employee?.NameEmployee,
+                Total = o.Total?.ToString("N2") + " $"
             }).ToList();
 
             dgvInvoices.DataSource = displayData;

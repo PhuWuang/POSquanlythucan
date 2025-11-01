@@ -717,5 +717,11 @@ namespace QLBanDoAnNhanh
             frmInvoiceList invoiceForm = new frmInvoiceList();
             invoiceForm.ShowDialog();
         }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            frmStatistics statsForm = new frmStatistics();
+            statsForm.ShowDialog();
+        }
     }
 }

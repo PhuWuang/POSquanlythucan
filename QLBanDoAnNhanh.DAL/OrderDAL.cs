@@ -64,6 +64,25 @@ namespace QLBanDoAnNhanh.DAL
 
             return query.OrderByDescending(o => o.CreateDate).ToList();
         }
+        // HÀM MỚI: Tính tổng doanh thu theo khoảng thời gian
+        public decimal GetTotalRevenueByDateRange(DateTime startDate, DateTime endDate)
+        {
+            // Thêm 1 ngày vào ngày kết thúc để bao gồm tất cả hóa đơn trong ngày đó
+            var inclusiveEndDate = endDate.Date.AddDays(1);
+
+            // Lọc các hóa đơn trong khoảng thời gian
+            var ordersInDateRange = _context.Orders
+                                            .Where(o => o.CreateDate >= startDate.Date && o.CreateDate < inclusiveEndDate);
+
+            // Nếu không có hóa đơn nào, trả về 0
+            if (!ordersInDateRange.Any())
+            {
+                return 0;
+            }
+
+            // Tính tổng cột Total và trả về
+            return ordersInDateRange.Sum(o => o.Total ?? 0);
+        }
     }
 
 }

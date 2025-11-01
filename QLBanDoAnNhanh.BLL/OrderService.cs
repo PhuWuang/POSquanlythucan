@@ -79,5 +79,10 @@ namespace QLBanDoAnNhanh.BLL
         {
             return _orderDAL.SearchOrders(orderId, startDate, endDate);
         }
+        // HÀM MỚI: Gọi xuống DAL để lấy tổng doanh thu
+        public decimal GetTotalRevenueByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _orderDAL.GetTotalRevenueByDateRange(startDate, endDate);
+        }
     }
 }
