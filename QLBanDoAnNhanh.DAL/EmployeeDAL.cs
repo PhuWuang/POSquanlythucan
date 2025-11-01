@@ -20,5 +20,17 @@ namespace QLBanDoAnNhanh.DAL
             // FirstOrDefault sẽ trả về Employee đầu tiên tìm thấy, hoặc null nếu không có
             return _context.Employees.FirstOrDefault(e => e.Email == email);
         }
+        // HÀM MỚI: Lấy thông tin nhân viên theo ID
+        public Employee GetById(int employeeId)
+        {
+            return _context.Employees.Find(employeeId);
+        }
+
+        // HÀM MỚI: Cập nhật thông tin nhân viên
+        public bool UpdateEmployee(Employee employee)
+        {
+            _context.Entry(employee).State = System.Data.Entity.EntityState.Modified;
+            return _context.SaveChanges() > 0;
+        }
     }
 }

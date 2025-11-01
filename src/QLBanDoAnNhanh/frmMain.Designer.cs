@@ -369,10 +369,10 @@
             // lbUser
             // 
             this.lbUser.AutoSize = true;
-            this.lbUser.Font = new System.Drawing.Font("UTM Alexander", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUser.Font = new System.Drawing.Font("UTM Alexander", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUser.Location = new System.Drawing.Point(89, 21);
             this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(49, 20);
+            this.lbUser.Size = new System.Drawing.Size(44, 20);
             this.lbUser.TabIndex = 1;
             this.lbUser.Text = "Login";
             // 
@@ -487,10 +487,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("UTM Alexander", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("UTM Alexander", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(169, 104);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 18);
+            this.label7.Size = new System.Drawing.Size(65, 18);
             this.label7.TabIndex = 9;
             this.label7.Text = "Category >";
             // 

@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBanDoAnNhanh.BLL;
 
 namespace QLBanDoAnNhanh
 {
     public partial class frmChangePass : Form
     {
-        private PosFastFood _posFastFood;
         private int _idEmployee;
         public frmChangePass(int idEmployee)
         {
@@ -28,39 +28,26 @@ namespace QLBanDoAnNhanh
 
         private void btnConfr_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tbNewpass.Text) == true)
+            // 1. Input validation (remains the same)
+            if (string.IsNullOrWhiteSpace(tbOldpass.Text) || string.IsNullOrWhiteSpace(tbNewpass.Text))
             {
-                errorProvider.SetError(tbNewpass, "Not empty!");
+                MessageBox.Show("Old and new passwords cannot be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 2. Call the BLL to handle the logic
+            var employeeService = new EmployeeService();
+            bool success = employeeService.ChangePassword(_idEmployee, tbOldpass.Text, tbNewpass.Text);
+
+            // 3. Handle the result
+            if (success)
+            {
+                MessageBox.Show("Password changed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
-                errorProvider.SetError(tbNewpass, "");
-            }
-            if (string.IsNullOrWhiteSpace(tbOldpass.Text) == true)
-            {
-                errorProvider.SetError(tbOldpass, "Not empty!");
-            }
-            else
-            {
-                errorProvider.SetError(tbOldpass, "");
-            }
-            _posFastFood = new PosFastFood();
-            var emp = _posFastFood.Employees.Find(_idEmployee);
-            if (string.IsNullOrEmpty(errorProvider.GetError(tbNewpass)) == true && string.IsNullOrEmpty(errorProvider.GetError(tbOldpass)) == true)
-            {
-                if (string.Compare(tbOldpass.Text, emp.Password, false) == 0)
-                {
-                    if (emp != null)
-                    {
-                        emp.Password = tbNewpass.Text;
-                    }
-                    _posFastFood.SaveChanges();
-                    MessageBox.Show("Changing success!!");
-                }
-                else
-                {
-                    MessageBox.Show("Old password not correct!!");
-                }
+                MessageBox.Show("Failed to change password. Please check your old password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void picShowHide2_Click(object sender, EventArgs e)

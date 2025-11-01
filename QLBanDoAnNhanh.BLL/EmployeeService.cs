@@ -44,5 +44,31 @@ namespace QLBanDoAnNhanh.BLL
         {
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
+        // HÀM MỚI: Xử lý nghiệp vụ đổi mật khẩu
+        public bool ChangePassword(int employeeId, string oldPassword, string newPassword)
+        {
+            // 1. Lấy thông tin nhân viên hiện tại từ DAL
+            var employee = _employeeDAL.GetById(employeeId);
+            if (employee == null)
+            {
+                return false; // Không tìm thấy nhân viên
+            }
+
+            // 2. Dùng BCrypt.Verify để xác thực mật khẩu cũ
+            // Đây là cách so sánh chính xác giữa văn bản thường và chuỗi đã mã hóa
+            if (!BCrypt.Net.BCrypt.Verify(oldPassword, employee.Password))
+            {
+                return false; // Mật khẩu cũ không đúng
+            }
+
+            // 3. Nếu mật khẩu cũ đúng, mã hóa mật khẩu mới
+            string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+            // 4. Cập nhật mật khẩu đã mã hóa mới cho nhân viên
+            employee.Password = newHashedPassword;
+
+            // 5. Gọi xuống DAL để lưu thay đổi
+            return _employeeDAL.UpdateEmployee(employee);
+        }
     }
 }
