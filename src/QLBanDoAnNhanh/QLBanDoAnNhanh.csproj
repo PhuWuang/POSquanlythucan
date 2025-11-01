@@ -182,6 +182,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -199,6 +200,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="burger.ico" />
+    <None Include="Resources\eye_open.jpg" />
+    <None Include="Resources\eye_slash.jpg" />
+    <None Include="Resources\z7176872499458_69e094579b389f05aa7529e643fa3dc2.jpg" />
+    <None Include="Resources\z7176863371449_4c2e745aaa62748697dfd8f28f26835f.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

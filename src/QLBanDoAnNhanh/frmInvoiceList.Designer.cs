@@ -45,13 +45,12 @@
             this.dgvInvoices.AllowUserToAddRows = false;
             this.dgvInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvInvoices.Location = new System.Drawing.Point(0, 0);
+            this.dgvInvoices.Location = new System.Drawing.Point(64, 96);
             this.dgvInvoices.Name = "dgvInvoices";
             this.dgvInvoices.ReadOnly = true;
             this.dgvInvoices.RowHeadersWidth = 51;
             this.dgvInvoices.RowTemplate.Height = 24;
-            this.dgvInvoices.Size = new System.Drawing.Size(800, 450);
+            this.dgvInvoices.Size = new System.Drawing.Size(682, 251);
             this.dgvInvoices.TabIndex = 0;
             this.dgvInvoices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInvoices_CellDoubleClick);
             // 
@@ -81,7 +80,7 @@
             // 
             // txtSearchMaHD
             // 
-            this.txtSearchMaHD.Location = new System.Drawing.Point(24, 12);
+            this.txtSearchMaHD.Location = new System.Drawing.Point(21, 12);
             this.txtSearchMaHD.Name = "txtSearchMaHD";
             this.txtSearchMaHD.Size = new System.Drawing.Size(177, 22);
             this.txtSearchMaHD.TabIndex = 11;

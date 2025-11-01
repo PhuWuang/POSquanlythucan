@@ -131,18 +131,26 @@ namespace QLBanDoAnNhanh
             }
         }
 
-        private void cbShow_CheckedChanged(object sender, EventArgs e)
+        private void picShowHide_Click(object sender, EventArgs e)
         {
-            if (cbShow.Checked == true)
+            // Kiểm tra xem mật khẩu đang bị che hay không
+            if (tbPass.PasswordChar == '*')
             {
-                cbShow.Text = "Hide";
-                tbPass.PasswordChar = '\0';
+                // Nếu đang bị che, thì hiện nó ra
+                tbPass.PasswordChar = '\0'; // Ký tự null sẽ hiển thị text bình thường
+
+                // Đổi ảnh của PictureBox thành con mắt bị gạch chéo
+                picShowHide.Image = Properties.Resources.eye_slash; // <-- THAY BẰNG TÊN ẢNH CON MẮT GẠCH CHÉO
             }
             else
             {
-                cbShow.Text = "Show";
+                // Nếu đang hiện, thì che nó đi
                 tbPass.PasswordChar = '*';
+
+                // Đổi ảnh của PictureBox về con mắt mở
+                picShowHide.Image = Properties.Resources.eye_open; // <-- THAY BẰNG TÊN ẢNH CON MẮT MỞ
             }
         }
     }
 }
+
